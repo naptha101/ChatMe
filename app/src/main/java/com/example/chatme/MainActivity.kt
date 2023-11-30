@@ -31,7 +31,9 @@ class MainActivity : AppCompatActivity() {
     private lateinit var Adapter:userAdapter
     private lateinit var dbref:DatabaseReference
 private lateinit var mAuth:FirebaseAuth
-    override fun onCreate(savedInstanceState: Bundle?) {
+
+///dsdvevervev
+override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
            online()
