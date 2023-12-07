@@ -4,40 +4,42 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#EAF6E1"
     tools:context=".ChatActivity">
+
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recy"
         android:layout_width="match_parent"
         android:layout_height="660dp"
-        android:id="@+id/recy"
-        android:background="#EDEDED"
-        android:layout_centerHorizontal="true"
+        android:layout_above="@+id/ll"
         android:layout_alignParentTop="true"
-        ></androidx.recyclerview.widget.RecyclerView>
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="1dp"></androidx.recyclerview.widget.RecyclerView>
 
     <LinearLayout
+        android:id="@+id/ll"
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:layout_alignParentBottom="true"
-        android:weightSum="100"
+        android:background="#ECEDEA"
         android:orientation="horizontal"
-        android:id="@+id/ll"
-        >
+        android:weightSum="100">
+
         <EditText
+            android:id="@+id/messagebox"
             android:layout_width="280dp"
             android:layout_height="50dp"
             android:layout_marginTop="12dp"
             android:layout_weight="80"
-            android:hint="Type Text Here"
-            android:id="@+id/messagebox"
-            ></EditText>
-     <View
-         android:layout_width="50dp"
-         android:layout_height="50dp"
-    android:layout_marginLeft="30dp"
-         android:layout_marginTop="12dp"
-         android:id="@+id/send"
-android:background="@drawable/img_1"
-         ></View>
+            android:hint="Type Text Here"></EditText>
+
+        <View
+            android:id="@+id/send"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/img_1"></View>
 
 
     </LinearLayout>

@@ -20,10 +20,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/sendd"
+        android:textAlignment="textStart"
         android:maxWidth="300dp"
+
         android:text="sent message"
         android:textSize="18dp"
-        android:gravity="right"
+
         android:orientation="horizontal"
 
 

@@ -42,16 +42,16 @@ login2(email.text.toString(),pass.text.toString())
        // supportActionBar?.hide()
     }
     fun login2(email:String,pass:String){
-        sharedPreferences = getPreferences(Context.MODE_PRIVATE)
+        //sharedPreferences = getPreferences(Context.MODE_PRIVATE)
         var check:RadioButton=findViewById(R.id.radio)
 
 auth.signInWithEmailAndPassword(email,pass).addOnCompleteListener {
     task->
     if(task.isSuccessful){
         if(check.isChecked==true){
-            sharedPreferences.edit().putString("rememberMe","yes" ).apply()
+        //    sharedPreferences.edit().putString("rememberMe","yes" ).apply()
         }else{
-            sharedPreferences.edit().putString("rememberMe", "no").apply()
+          //  sharedPreferences.edit().putString("rememberMe", "no").apply()
         }
 
         startActivity(Intent(this,MainActivity::class.java))

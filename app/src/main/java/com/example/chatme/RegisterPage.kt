@@ -11,6 +11,7 @@ import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
@@ -101,11 +102,12 @@ datab=FirebaseDatabase.getInstance().getReference();
 
 
     }
+
     private fun uploadProfilePhoto(userId: String) {
         real?.let { uri ->
             val storageRef: StorageReference = imgupld.reference.child("profile_images/$userId.jpg")
             storageRef.putFile(real)
-                .addOnSuccessListener { /* Handle upload success */ }
+                .addOnSuccessListener { Toast.makeText(this,"photo updated",Toast.LENGTH_SHORT).show() }
                 .addOnFailureListener { /* Handle upload failure */ }
         }
     }

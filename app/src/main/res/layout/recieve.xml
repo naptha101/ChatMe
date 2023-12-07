@@ -19,7 +19,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:background="@drawable/rec"
-            android:gravity="right"
+
+            android:textAlignment="textStart"
             android:orientation="horizontal"
             android:padding="8dp"
             android:maxWidth="280dp"

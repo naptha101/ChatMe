@@ -33,14 +33,14 @@ class SplashScreen : AppCompatActivity() {
         Handler().postDelayed({
 var auth=FirebaseAuth.getInstance()
             var sharedPreferences=getPreferences(Context.MODE_PRIVATE)
-            if (auth.currentUser != null && sharedPreferences.getString("rememberMe","yes").equals("yes")) {
+            /*if (auth.currentUser != null && sharedPreferences.getString("rememberMe","yes").equals("yes")) {
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
                 finish()}
-            else {
+            else {*/
             startActivity(Intent(this, Loginpage::class.java))
                 finish()
-                }
+                //}
             }, 1000)
 
 
