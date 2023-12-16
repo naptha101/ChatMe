@@ -1,34 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="15dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    <RelativeLayout
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        >
+        <TextView
+            android:id="@+id/sendd"
+            android:layout_width="wrap_content"
 
-    <TextView
-        android:padding="8dp"
-        android:background="@drawable/sen"
-        android:layout_alignParentRight="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/sendd"
-        android:textAlignment="textStart"
-        android:maxWidth="300dp"
+            android:layout_height="wrap_content"
 
-        android:text="sent message"
-        android:textSize="18dp"
+            android:background="@drawable/sen"
+            android:maxWidth="300dp"
+            android:orientation="horizontal"
+            android:padding="8dp"
+            android:text="sent message"
 
-        android:orientation="horizontal"
+            android:textAlignment="textStart"
 
 
-        ></TextView>
-    </RelativeLayout>
+            android:textSize="18dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/action_bar_image"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.4"></TextView>
+
+        <ImageView
+            android:id="@+id/action_bar_image"
+            android:layout_width="46dp"
+            android:layout_height="45dp"
+            android:layout_gravity="center"
+            android:background="@drawable/circular_background"
+            android:contentDescription="Circular Image"
+            android:padding="4dp"
+            android:scaleType="centerCrop"
+
+            android:src="@drawable/baseline_person_24"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

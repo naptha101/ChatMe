@@ -2,6 +2,7 @@ package com.example.chatme
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -17,6 +18,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CircleCrop
+
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -54,41 +56,67 @@ var reciverroom:String?=null
         actionBar?.setDisplayShowCustomEnabled(true)
 var back=customActionBarView.findViewById<ImageView>(R.id.back)
         back.setOnClickListener {
+
+            messAdap.recuri=null;
             startActivity(Intent(this,MainActivity::class.java));
            
         }
         // Customize the circular image
         val circularImageView = customActionBarView.findViewById<ImageView>(R.id.action_bar_image)
-
-
+        list=ArrayList()
+        var  mesAdap=messAdap(this,list)
         var name= this.intent.getStringExtra("name")
         var uid= this.intent.getStringExtra("uid")
+        meslay=findViewById(R.id.recy)
+        send=findViewById(R.id.send)
+        mesbox=findViewById(R.id.messagebox)
+        meslay=findViewById(R.id.recy)
+
+        val recuid=uid;
+
+        mdbref=FirebaseDatabase.getInstance().getReference()
+        val senuid=FirebaseAuth.getInstance().currentUser?.uid
+        senderroom = recuid+senuid
+        reciverroom=senuid+recuid
+
         val nameText=customActionBarView.findViewById<TextView>(R.id.textView2)
         nameText.setText(name)
+        val auth=FirebaseAuth.getInstance().currentUser!!.uid
+      //  if(auth!=null){
+      //  mesAdap.urri=FirebaseStorage.getInstance().reference.child("profile_images/${auth.toString()}.jpg")}
+        var storage= FirebaseStorage.getInstance()
+
+       /* val storageRef: StorageReference = storage.reference.child("profile_images/${uid}.jpg")
+
+        storageRef.downloadUrl.addOnSuccessListener { uri ->
+
+        recuri=uri
+        }
+
+
+        val storageRef2: StorageReference = storage.reference.child("profile_images/${auth}.jpg")
+
+        storageRef2.downloadUrl.addOnSuccessListener { uri ->
+
+           senduri=uri
+        }*/
+
         if (uid != null) {
             var storage= FirebaseStorage.getInstance()
             val storageRef: StorageReference = storage.reference.child("profile_images/${uid}.jpg")
 
             storageRef.downloadUrl.addOnSuccessListener { uri ->
+
                 Glide.with(this)
                     .load(uri) // Replace with the URL or resource of the user's profile image
                     .placeholder(R.drawable.baseline_person_24) // Default image resource
                     .transform(CircleCrop()) // Apply a circular crop to the image
                     .into(circularImageView)
             }.addOnFailureListener { /* Handle download failure */ }
+
         }
 
-meslay=findViewById(R.id.recy)
-        send=findViewById(R.id.send)
-        mesbox=findViewById(R.id.messagebox)
-        meslay=findViewById(R.id.recy)
-        list=ArrayList()
-        val recuid=uid;
-      var  mesAdap=messAdap(this,list)
-        mdbref=FirebaseDatabase.getInstance().getReference()
-val senuid=FirebaseAuth.getInstance().currentUser?.uid
-        senderroom = recuid+senuid
-        reciverroom=senuid+recuid
+
 
         mdbref.child("chats").child(senderroom!!).child("messages").addValueEventListener(
             object :ValueEventListener{

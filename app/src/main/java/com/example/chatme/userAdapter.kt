@@ -64,6 +64,24 @@ holder.oln.setImageResource(R.drawable.circular_backgroundl3)
 
             intent.putExtra("name",ret.name)
          intent.putExtra("uid",ret.uid)
+
+            var storage= FirebaseStorage.getInstance()
+if(messAdap.recuri==null) {
+    val storageRef: StorageReference = storage.reference.child("profile_images/${ret.uid}.jpg")
+
+    storageRef.downloadUrl.addOnSuccessListener { uri ->
+
+        messAdap.recuri = uri
+    }
+}
+
+       if(messAdap.senduri==null){ val storageRef2: StorageReference = storage.reference.child("profile_images/${FirebaseAuth.getInstance().currentUser!!.uid}.jpg")
+
+            storageRef2.downloadUrl.addOnSuccessListener { uri ->
+
+                messAdap.senduri=uri
+            }
+       }
             Context.startActivity(intent)
         }
     }
